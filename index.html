@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Urna Eletrônica – Primaz da IEAB</title><link rel="stylesheet" href="style.css"></head>
+<title>Urna Eletrônica – Primaz da IEAB</title><link rel="stylesheet" href="style.css?v=3"></head>
 <body>
 <div class="card" id="ident">
   <h1>Consulta ao Primaz da IEAB</h1>
@@ -8,12 +8,14 @@
   <label for="nome">Seu nome completo</label><input id="nome" type="text" autocomplete="name">
   <div class="err" id="err"></div>
   <button class="btn" id="iniciar">Ir para a urna</button>
+  <button class="btn sec abrir-cola" type="button">📋 Ver colinha (dioceses e candidatos)</button>
 </div>
 
 <div class="urna hidden" id="urna">
   <div class="tela" id="tela"></div>
   <div class="teclado">
     <div class="logo">URNA ELETRÔNICA · IEAB</div>
+    <button class="cola-btn abrir-cola" type="button">📋 COLA</button>
     <div class="keys" id="keys"></div>
     <div class="acoes">
       <button class="key branco" data-k="branco">BRANCO</button>
@@ -22,5 +24,6 @@
     </div>
   </div>
 </div>
-<script src="config.js"></script><script src="storage.js"></script><script src="urna.js"></script>
+<div class="modal hidden" id="cola"><div class="modal-box"><button class="modal-x" id="cola-x" aria-label="Fechar">✕</button><h2>Colinha</h2><div id="cola-corpo"></div></div></div>
+<script src="config.js?v=3"></script><script src="storage.js?v=3"></script><script src="urna.js?v=3"></script>
 </body></html>

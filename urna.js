@@ -11,7 +11,7 @@ function somFim() { beep(700, .25); setTimeout(() => beep(700, .25), 280); setTi
 $("keys").insertAdjacentHTML("beforeend", `<button class="key z" data-k="0">0</button>`);
 document.querySelectorAll(".key").forEach(b => b.onclick = () => press(b.dataset.k));
 document.addEventListener("keydown", e => {
-  if ($("urna").classList.contains("hidden")) return;
+  if ($("urna").classList.contains("hidden") || !$("cola").classList.contains("hidden")) return;
   if (/^\d$/.test(e.key)) press(e.key); else if (e.key === "Enter") press("confirma"); else if (e.key === "Backspace" || e.key === "Escape") press("corrige");
 });
 
@@ -28,7 +28,7 @@ function press(k) {
   beep(900, .07);
   if (/^\d$/.test(k)) { if (!branco && digits.length < 2) digits += k; }
   else if (k === "corrige") { digits = ""; branco = false; }
-  else if (k === "branco") { if (etapa === "candidato" && digits.length === 0) branco = true; }
+  else if (k === "branco") { if (etapa === "candidato") { digits = ""; branco = true; } else beep(300, .2); }
   else if (k === "confirma") return confirmar();
   render();
 }
@@ -77,5 +77,24 @@ function render() {
 
 function fotoHTML(c) {
   const ini = initials(c.nome);
-  return `<div class="foto">${c.foto ? `<img src="${c.foto}" alt="" onerror="this.remove()">` : ""}<span style="position:absolute;z-index:-0">${ini}</span><small>${c.num}</small></div>`;
+  const conteudo = c.foto ? `<img src="${c.foto}" alt="" onerror="this.replaceWith(document.createTextNode('${ini}'))">` : ini;
+  return `<div class="foto">${conteudo}<small>${c.num}</small></div>`;
 }
+
+// ===== COLA (pop-up com dioceses e candidatos) =====
+function montarCola() {
+  const thumb = c => c.foto ? `<img class="thumb" src="${c.foto}" alt="" onerror="this.style.visibility='hidden'">` : "";
+  $("cola-corpo").innerHTML =
+    `<h3>Dioceses</h3><table>${cfg.dioceses.map(d => `<tr><td class="n">${d.num}</td><td>${d.nome}</td></tr>`).join("")}</table>` +
+    `<h3>Candidatos – ${cfg.titulo}</h3><table>${cfg.candidatos.map(c => `<tr><td class="n">${c.num}</td><td>${thumb(c)}</td><td><b>${c.nome}</b><br><small>${c.cargo}</small></td></tr>`).join("")}</table>`;
+}
+async function abrirCola() {
+  if (!cfg) cfg = await Store.getConfig();
+  montarCola(); $("cola").classList.remove("hidden");
+}
+function fecharCola() { $("cola").classList.add("hidden"); }
+document.querySelectorAll(".abrir-cola").forEach(b => b.onclick = abrirCola);
+$("cola-x").onclick = fecharCola;
+$("cola").onclick = e => { if (e.target.id === "cola") fecharCola(); };
+document.addEventListener("keydown", e => { if (e.key === "Escape") fecharCola(); });
+Store.getConfig().then(c => cfg = c);
