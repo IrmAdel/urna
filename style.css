@@ -1,0 +1,45 @@
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#2b2f33;color:#222;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:12px}
+.hidden{display:none!important}
+/* cartão de identificação */
+.card{background:#f1efe9;border-radius:10px;padding:28px;max-width:440px;width:100%;box-shadow:0 8px 30px #0008}
+.card h1{margin:0 0 4px;font-size:22px;color:#1d3557}.card p{margin:0 0 18px;color:#555;font-size:14px}
+label{display:block;font-weight:bold;font-size:13px;margin:12px 0 4px}
+input[type=text],input[type=password],select,input:not([type]){width:100%;padding:10px;border:1px solid #999;border-radius:6px;font-size:15px}
+.btn{background:#1d3557;color:#fff;border:0;padding:12px 18px;border-radius:6px;font-size:15px;cursor:pointer;margin-top:18px;width:100%}
+.btn:hover{background:#274a7a}.btn.sec{background:#777}.btn.red{background:#b3261e}.btn.sm{width:auto;margin:0;padding:6px 10px;font-size:13px}
+.err{color:#b3261e;font-size:13px;margin-top:10px;min-height:16px}
+/* urna */
+.urna{display:flex;max-width:900px;width:100%;background:#d8d5cd;border-radius:14px;padding:18px;gap:18px;box-shadow:0 10px 40px #000a;border:3px solid #b9b5ab}
+.tela{flex:1.6;background:#eef1ee;border:4px solid #555;border-radius:6px;padding:16px;min-height:420px;position:relative;display:flex;flex-direction:column}
+.tela .topo{font-size:12px;color:#444;border-bottom:1px solid #aaa;padding-bottom:6px;margin-bottom:10px}
+.tela .titulo{font-size:15px;font-weight:bold;margin-bottom:8px}
+.tela .cargo{font-size:22px;font-weight:bold;text-align:center;margin:6px 0 14px;letter-spacing:1px}
+.digitos{display:flex;gap:6px;align-items:center;margin:6px 0}
+.digitos span{width:38px;height:48px;border:2px solid #222;font-size:30px;font-weight:bold;display:flex;align-items:center;justify-content:center;background:#fff}
+.digitos span.cur{border-color:#c00}
+.info{margin-top:10px;font-size:15px;line-height:1.45}.info b{font-size:17px}
+.foto{position:absolute;right:16px;top:60px;width:110px;height:140px;border:2px solid #333;background:#ccd;object-fit:cover;display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:bold;color:#456;overflow:hidden}
+.foto img{width:100%;height:100%;object-fit:cover}
+.foto small{position:absolute;bottom:0;left:0;right:0;background:#000a;color:#fff;font-size:10px;text-align:center;padding:2px}
+.rodape{margin-top:auto;border-top:1px solid #aaa;padding-top:8px;font-size:12px;color:#333}
+.aviso{font-size:20px;font-weight:bold;margin-top:12px}
+.fim{font-size:90px;font-weight:bold;text-align:center;margin:auto;letter-spacing:6px}
+.teclado{flex:1;background:#2a2a2a;border-radius:8px;padding:14px;display:flex;flex-direction:column}
+.teclado .logo{color:#ddd;text-align:center;font-size:13px;margin-bottom:10px;letter-spacing:2px}
+.keys{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.key{background:#111;color:#fff;border:2px solid #444;border-radius:6px;font-size:22px;font-weight:bold;padding:14px 0;cursor:pointer}
+.key:active{transform:translateY(2px)}.key.z{grid-column:2}
+.acoes{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:8px;margin-top:14px}
+.acoes .key{font-size:11px;padding:16px 2px}
+.branco{background:#fff!important;color:#000!important}.corrige{background:#f4801f!important;color:#000!important}.confirma{background:#2e9e45!important;color:#000!important;font-size:12px!important}
+@media(max-width:720px){.urna{flex-direction:column}.tela{min-height:380px}.foto{width:90px;height:115px}}
+/* admin */
+.admin{max-width:1000px;width:100%;background:#f1efe9;border-radius:10px;padding:22px;align-self:flex-start}
+.admin h1{margin-top:0;color:#1d3557}.tabs{display:flex;gap:6px;margin:12px 0;flex-wrap:wrap}
+.tabs button{padding:8px 14px;border:0;border-radius:6px;background:#ccc;cursor:pointer}.tabs button.on{background:#1d3557;color:#fff}
+table{width:100%;border-collapse:collapse;font-size:14px;background:#fff}th,td{border:1px solid #ccc;padding:6px;text-align:left}th{background:#e3e6ea}
+td input{padding:5px;font-size:13px;width:100%}
+.bar{background:#1d3557;height:16px;border-radius:3px}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.row .btn{width:auto;margin:0}
+.thumb{width:36px;height:46px;object-fit:cover;vertical-align:middle;border:1px solid #999}
